@@ -55,3 +55,12 @@ updated_product_PATCH = {
 
 response_PATCH = requests.patch(f"{BASE_URL}/products/21", json=updated_product_PATCH)
 print(response_PATCH.json())
+'''
+Иногда нам не нужно полностью заменять старые данные. Скорее мы хотим изменить только определенные поля. 
+В этом случае мы используем запрос PATCH.'''
+
+response_DELETE = requests.delete(f"{BASE_URL}/products/21")
+print(response_DELETE.json())
+'''Как следует из названия, если вы хотите удалить ресурс из API, 
+вы можете использовать запрос DELETE. Удалим товар с идентификатором, равным 21
+'''
