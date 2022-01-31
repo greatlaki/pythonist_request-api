@@ -1,3 +1,4 @@
+from pprint import pprint
 import requests
 
 BASE_URL = 'https://fakestoreapi.com'
@@ -7,8 +8,8 @@ query_params = {
 }
 
 # response = requests.get(f"{BASE_URL}/products")
-response = requests.get(f"{BASE_URL}/products", params=query_params)
-print(response.json())
+response_GET = requests.get(f"{BASE_URL}/products", params=query_params)
+pprint(response_GET.json())
 '''
 1. В приведенном выше сценарии используется метод requests.get() для отправки запроса GET 
 в конечную точку API /products. 
@@ -18,4 +19,20 @@ print(response.json())
 Таким образом, мы создаем словарь с именем query_params и передаем limit в качестве ключа и 3 в качестве значения. 
 Затем мы передаем этот словарь query_params в request.get()
 '''
-print(response.status_code)
+
+new_product = {
+    "title": 'test product',
+    "price": 13.5,
+    "description": 'lorem ipsum set',
+    "image": 'https://i.pravatar.cc',
+    "category": 'electronic'
+}
+
+response_POST = requests.post(f"{BASE_URL}/products", json=new_product)
+print(response_POST.json())
+'''
+Мы используем запрос POST для добавления новых данных в REST API. Данные отправляются на сервер в формате JSON, 
+который выглядит как словарь Python. Согласно документации Fake Store API, у продукта есть 
+следующие атрибуты: title (название), price (цена), description (описание), image (изображение) и category (категория).
+'''
+
