@@ -36,3 +36,15 @@ print(response_POST.json())
 следующие атрибуты: title (название), price (цена), description (описание), image (изображение) и category (категория).
 '''
 
+updated_product = {
+    "title": 'updated_product',
+    "category": 'clothing'
+}
+
+response_PUT = requests.put(f"{BASE_URL}/products/21", json=updated_product)
+print(response_PUT.json())
+
+'''
+Используя запрос PUT, мы можем обновить данные полностью. Это означает, что, когда мы делаем запрос PUT, 
+он заменяет все старые данные новыми.
+'''
